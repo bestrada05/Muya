@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { Eye, ShoppingCart } from "lucide-react";
+import { useCart } from "../context/CartContext";
+import { toast } from "sonner";
 
 export function Products() {
+  const { addToCart } = useCart();
+
   const products = [
     {
       id: 1,
@@ -53,6 +57,11 @@ export function Products() {
     },
   ];
 
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    toast.success("Producto añadido al carrito");
+  };
+
   return (
     <section className="products">
       <div className="products-container">
@@ -80,7 +89,10 @@ export function Products() {
                   <Eye className="w-4 h-4" />
                   <span>Ver más</span>
                 </Link>
-                <button className="product-button buy">
+                <button
+                  className="product-button buy"
+                  onClick={() => handleAddToCart(product)}
+                >
                   <ShoppingCart className="w-4 h-4" />
                   <span>Comprar</span>
                 </button>

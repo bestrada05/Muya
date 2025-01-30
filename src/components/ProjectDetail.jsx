@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 export function ProjectDetail() {
   const { id } = useParams();
 
-  // This would typically fetch project data based on the ID
+  // Aca debemos extraer los proyectos de la base de Datos
+  // Dejo esto a modo de ejemplo para visualizar 1 proyecto
   const project = {
     name: "Nombre Proyecto",
     description:

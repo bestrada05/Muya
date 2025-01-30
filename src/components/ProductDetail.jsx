@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShoppingCart, ArrowRight } from "lucide-react";
+import { useCart } from "../context/CartContext";
+import { toast } from "sonner";
 
 export function ProductDetail() {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
 
   // Aca debemos extraer los productos de la base de Datos
   // Dejo esto a modo de eejmplo para visualizar 1 producto
   const product = {
+    id: 1,
     name: "Nombre Producto",
     description:
       "Lorem ipsum odor amet, consectetuer adipiscing elit. Mattis at eu vulputate magna faucibus elementum. Quam nisi lobortis ligula ante dolor rhoncus. Massa porta fringilla mus ut enim. Volutpat morbi feugiat magna magnis ligula odio praesent.",
@@ -23,9 +27,9 @@ export function ProductDetail() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Adding to cart:", { productId: id, quantity });
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+    toast.success("Producto añadido al carrito");
   };
 
   return (
@@ -36,7 +40,7 @@ export function ProductDetail() {
           <div className="product-detail-description">
             <p>{product.description}</p>
           </div>
-          <form onSubmit={handleSubmit} className="product-detail-form">
+          <div className="product-detail-form">
             <div className="quantity-input">
               <input
                 type="number"
@@ -46,12 +50,12 @@ export function ProductDetail() {
                 aria-label="Cantidad"
               />
             </div>
-            <button type="submit" className="buy-button">
+            <button onClick={handleAddToCart} className="buy-button">
               <ShoppingCart className="button-icon" />
               <span>Comprar</span>
               <ArrowRight className="button-icon" />
             </button>
-          </form>
+          </div>
         </div>
         <div className="product-detail-image">
           <img src={product.image || "/placeholder.svg"} alt={product.name} />

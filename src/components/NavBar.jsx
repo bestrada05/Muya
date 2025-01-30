@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export function NavBar() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isHome ? "navbar-transparent" : "navbar-solid"}`}>
       <div className="navbar-container">
         <Link to="/" className="logo">
           <img src="/fotos/LOGO.PNG" alt="Logo" className="logo-img" />
