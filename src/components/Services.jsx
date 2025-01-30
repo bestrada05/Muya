@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { ChevronUp, ChevronDown, Leaf } from "lucide-react";
 
 export function Services() {
   const [expandedId, setExpandedId] = useState(null);
@@ -7,31 +7,39 @@ export function Services() {
   const services = [
     {
       id: 1,
-      number: "01",
-      title: "Título",
+      title: "Diseño de Paisajismo",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Diseñamos y creamos espacios verdes sostenibles, adaptados a su entorno y necesidades. Seleccionamos especies nativas y aplicamos estrategias de bajo mantenimiento para optimizar los recursos y fomentar la biodiversidad en cada proyecto.",
     },
     {
       id: 2,
-      number: "02",
-      title: "Título",
+      title: "Instalación de Riego Automatizado",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Implementamos sistemas de riego automatizado que reducen el consumo de agua y garantizan una hidratación eficiente. Adaptamos cada instalación según el tipo de suelo, vegetación y clima para optimizar su rendimiento y minimizar desperdicios",
     },
     {
       id: 3,
-      number: "03",
-      title: "Título",
+      title: "Mantención de Áreas Verdes",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Preservamos la salud y estética de jardines con podas, fertilización y control ecológico de plagas. Optimizamos su desarrollo con monitoreo continuo, ajustes en el riego y prácticas de conservación que prolongan su vida útil.",
     },
     {
       id: 4,
-      number: "04",
-      title: "Título",
+      title: "Diseño y Ejecución de Muros Verdes",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Transformamos muros en jardines verticales que mejoran la calidad del aire y la eficiencia térmica. Utilizamos especies resistentes, sistemas de riego automatizado y estructuras de bajo mantenimiento para maximizar su impacto.",
+    },
+    {
+      id: 5,
+      title: "Reactivación de Áreas Verdes",
+      description:
+        "Recuperamos espacios degradados con restauración del suelo, reforestación y especies nativas. Implementamos soluciones ecológicas para fomentar la biodiversidad y mejorar el equilibrio ambiental en cada intervención.",
+    },
+    {
+      id: 6,
+      title: "Gestión de Residuos y Compostaje",
+      description:
+        "Reducimos el impacto ambiental mediante compostaje y reciclaje de residuos vegetales. Aplicamos principios de economía circular para transformar desechos en recursos útiles para el mantenimiento y restauración de áreas verdes.",
     },
   ];
 
@@ -52,7 +60,7 @@ export function Services() {
                 aria-expanded={expandedId === service.id}
               >
                 <div className="service-title">
-                  <span className="service-number">{service.number}</span>
+                  <Leaf className="service-icon leaf-icon" />
                   <span className="service-name">{service.title}</span>
                 </div>
                 {expandedId === service.id ? (

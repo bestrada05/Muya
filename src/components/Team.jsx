@@ -28,13 +28,16 @@ export function Team() {
         <div className="team-content">
           <h2>Nuestro equipo</h2>
           <p>
-            Lorem ipsum odor amet, consectetuer adipiscing elit. Mattis at eu
-            vulputate magna faucibus elementum. Quam nisi lobortis ligula ante
-            dolor rhoncus. Massa porta fringilla mus ut enim. Volutpat morbi
-            feugiat magna magnis ligula odio praesent. Ornare ipsum semper
-            venenatis tellus consectetur ex. Massa ad suscipit elit sit
-            habitasse rutrum amet nascetur. Commodo curabitur netus mauris;
-            gravida odio vitae quis tempor.
+            En <b>Muya</b> , somos un equipo multidisciplinario comprometido con
+            <b>la agricultura urbana, el paisajismo y la sostenibilidad</b>. Nos
+            especializamos en el{" "}
+            <b>diseño, ejecución y mantenimiento de espacios verdes</b> ,
+            combinando creatividad, conocimiento técnico y responsabilidad
+            ambiental. Trabajamos de manera colaborativa para ofrecer{" "}
+            <b>soluciones innovadoras y adaptadas a cada entorno</b>, integrando
+            <b> tecnología, eficiencia hídrica y criterios ecológicos</b>.
+            Buscamos generar un impacto positivo en el medioambiente y fomentar
+            una cultura de <b>reverdecimiento y conexión con la naturaleza</b>.
           </p>
         </div>
         <div className="team-grid">
