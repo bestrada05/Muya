@@ -54,7 +54,7 @@ export function ProductDetail() {
           </form>
         </div>
         <div className="product-detail-image">
-          <img src={product.image || "/fotos/muya.jpg"} alt={product.name} />
+          <img src={product.image || "/placeholder.svg"} alt={product.name} />
         </div>
       </div>
     </div>
