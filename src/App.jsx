@@ -12,6 +12,8 @@ import { Cart } from "./components/Cart";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { ProductDetail } from "./components/ProductDetail";
+import { Login } from "./components/Login";
+import { Register } from "./components/Register";
 import { Toaster } from "./components/ui/Toaster";
 
 function HomePage() {
@@ -29,6 +31,8 @@ function HomePage() {
       <Services />
       <Products />
       <Contact />
+      <Login />
+      <Register />
     </>
   );
 }
@@ -51,6 +55,8 @@ function App() {
               <Route path="/contacto" element={<Contact />} />
               <Route path="/products/:slug" element={<ProductDetail />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
             </Routes>
           </main>
           <Footer />
