@@ -55,7 +55,7 @@ export function Cart() {
       </div>
       <div className="cart-decoration">
         <img
-          src="/fotos/PlantaCarrito.jpg"
+          src="https://res.cloudinary.com/dcv4katvi/image/upload/v1738533331/PlantaCarrito_qofcce.jpg"
           alt="Cart Plant"
           className="decoration-image"
         />

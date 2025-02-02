@@ -66,18 +66,18 @@ const projects = [
     images: [
       {
         id: 1,
-        src: "/fotos/terraza-sostenible-detalle1.jpg",
-        title: "Sistema de Captación Pluvial",
+        src: "",
+        title: "",
       },
       {
         id: 2,
-        src: "/fotos/terraza-sostenible-detalle2.jpg",
-        title: "Áreas de Reunión",
+        src: "",
+        title: "",
       },
       {
         id: 3,
-        src: "/fotos/terraza-sostenible-detalle3.jpg",
-        title: "Jardín de Biodiversidad",
+        src: "",
+        title: "",
       },
     ],
   },
@@ -87,24 +87,24 @@ const projects = [
     description:
       "Casa Muya es una muestra de nuestro enfoque en paisajismo, donde cada espacio está diseñado para maximizar su uso sin perder coherencia estética. La distribución consciente, la integración del agua y la vegetación crean un entorno equilibrado, funcional y acogedor",
     mainImage: {
-      src: "/fotos/corredor-verde-main.jpg",
-      title: "Vista del Corredor Verde",
+      src: "",
+      title: "Casa Muya",
     },
     images: [
       {
         id: 1,
-        src: "/fotos/corredor-verde-detalle1.jpg",
-        title: "Jardines de Lluvia",
+        src: "",
+        title: "",
       },
       {
         id: 2,
-        src: "/fotos/corredor-verde-detalle2.jpg",
-        title: "Corredor de Polinizadores",
+        src: "",
+        title: "",
       },
       {
         id: 3,
-        src: "/fotos/corredor-verde-detalle3.jpg",
-        title: "Áreas de Descanso",
+        src: "",
+        title: "",
       },
     ],
   },
