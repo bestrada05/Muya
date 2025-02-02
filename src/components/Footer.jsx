@@ -6,7 +6,11 @@ export function Footer() {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-logo">
-          <img src="/fotos/LOGO.PNG" alt="Logo" className="logofooter-img" />
+          <img
+            src="https://res.cloudinary.com/dcv4katvi/image/upload/v1738533330/LOGO_wp4aue.png"
+            alt="Logo"
+            className="logofooter-img"
+          />
           <div className="logo-text">
             <span className="brand-name">MUYA</span>
             <span className="brand-tagline">Agricultura Urbana</span>

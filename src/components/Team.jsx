@@ -2,23 +2,27 @@ export function Team() {
   const teamMembers = [
     {
       id: 1,
-      name: "Felipe",
-      image: "/fotos/trabajador1.jpg",
+      name: "Precisión y Seguridad en el Trabajo",
+      image:
+        "https://res.cloudinary.com/dcv4katvi/image/upload/v1738534006/2.1_tvsa6e.jpg",
     },
     {
       id: 2,
-      name: "Trabajador 2",
-      image: "/fotos/trabajador2.jpg",
+      name: "Cuidado y Estilo en Muros Verdes",
+      image:
+        "https://res.cloudinary.com/dcv4katvi/image/upload/v1738534006/2.2_ivu3ke.jpg",
     },
     {
       id: 3,
-      name: "Trabajador 3",
-      image: "/placeholder.svg?height=300&width=300",
+      name: "Nuestro equipo reunido en Casa Muya",
+      image:
+        "https://res.cloudinary.com/dcv4katvi/image/upload/v1738534007/2.3_cu5hqp.jpg",
     },
     {
       id: 4,
-      name: "Trabajador 4",
-      image: "/placeholder.svg?height=300&width=300",
+      name: "Trabajo de Mantención",
+      image:
+        "https://res.cloudinary.com/dcv4katvi/image/upload/v1738534888/IMG_0809_gs9obx.jpg",
     },
   ];
 
@@ -44,10 +48,7 @@ export function Team() {
           {teamMembers.map((member) => (
             <div key={member.id} className="team-card">
               <div className="team-card-image">
-                <img
-                  src={member.image || "/placeholder.svg"}
-                  alt={member.name}
-                />
+                <img src={member.image} alt={member.name} loading="lazy" />
               </div>
               <div className="team-card-name">{member.name}</div>
             </div>

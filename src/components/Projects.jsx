@@ -5,27 +5,27 @@ export function Projects() {
   const projects = [
     {
       id: 1,
-      title: "Proyecto 1",
-      image: "/placeholder.svg?height=400&width=600",
-      slug: "project-1",
+      title: "Propuesta de Diseño para la Casa Italia",
+      image:
+        "https://res.cloudinary.com/dcv4katvi/image/upload/v1738535197/3.1_Propuesta_de_Disen%CC%83o_para_la_Casa_Italia_vwrf9p.jpg",
     },
     {
       id: 2,
-      title: "Proyecto 2",
-      image: "/placeholder.svg?height=400&width=600",
-      slug: "project-2",
+      title: "Diseño y Ejecución en Tresmontes Lucchetti",
+      image:
+        "https://res.cloudinary.com/dcv4katvi/image/upload/v1738535196/3.2_Disen%CC%83o_y_Ejecucio%CC%81n_en_Tresmontes_Lucchetti_lclexc.jpg",
     },
     {
       id: 3,
-      title: "Proyecto 3",
-      image: "/placeholder.svg?height=400&width=600",
-      slug: "project-3",
+      title: "Paisajismo y Riego en Quinta Compton – PUCV",
+      image:
+        "https://res.cloudinary.com/dcv4katvi/image/upload/v1738535196/3.3_Paisajismo_y_Riego_en_Quinta_Compton_PUCV_ihdji7.jpg",
     },
     {
       id: 4,
-      title: "Proyecto 4",
-      image: "/placeholder.svg?height=400&width=600",
-      slug: "project-4",
+      title: "Casa Muya",
+      image:
+        "https://res.cloudinary.com/dcv4katvi/image/upload/v1738533332/trabajdor3_ob5psz.jpg",
     },
   ];
 
@@ -80,7 +80,7 @@ export function Projects() {
               {projects.map((project) => (
                 <Link
                   key={project.id}
-                  to={`/projects/${project.slug}`}
+                  to={`/projects/${project.id}`}
                   className="project-card"
                   style={{ width: `${100 / visibleCards}%` }}
                 >
@@ -92,22 +92,6 @@ export function Projects() {
                   </div>
                   <div className="project-card-content">
                     <h3>{project.title}</h3>
-                    <button className="project-button">
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="16"
-                        height="16"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                        <circle cx="12" cy="12" r="3" />
-                      </svg>
-                      <span>Ver más</span>
-                    </button>
                   </div>
                 </Link>
               ))}

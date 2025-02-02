@@ -4,7 +4,7 @@ export function Features() {
       <div className="features-container">
         <div className="feature-item">
           <img
-            src="/fotos/sostenibilidad_ambiental.png"
+            src="https://res.cloudinary.com/dcv4katvi/image/upload/v1738533331/sostenibilidad_ambiental_pyscmc.png"
             alt="Icon"
             className="feature-icon"
           />
@@ -12,18 +12,26 @@ export function Features() {
         </div>
 
         <div className="feature-item">
-          <img src="/fotos/seguridad.png" alt="Icon" className="feature-icon" />
+          <img
+            src="https://res.cloudinary.com/dcv4katvi/image/upload/v1738533331/seguridad_uv6pdt.png"
+            alt="Icon"
+            className="feature-icon"
+          />
           <h3>Inversión en Seguridad</h3>
         </div>
 
         <div className="feature-item">
-          <img src="/fotos/etica.png" alt="Icon" className="feature-icon" />
+          <img
+            src="https://res.cloudinary.com/dcv4katvi/image/upload/v1738533329/etica_lmszbm.png"
+            alt="Icon"
+            className="feature-icon"
+          />
           <h3>Ética Empresarial</h3>
         </div>
 
         <div className="feature-item">
           <img
-            src="/fotos/calidadpro.png"
+            src="https://res.cloudinary.com/dcv4katvi/image/upload/v1738533328/calidadpro_q0xd5c.png"
             alt="Icon"
             className="feature-icon"
           />

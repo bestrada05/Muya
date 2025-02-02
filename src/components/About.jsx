@@ -6,7 +6,7 @@ export function About() {
       <div className="about-container">
         <div className="about-image">
           <img
-            src="/fotos/planta_nosotros1.jpg"
+            src="https://res.cloudinary.com/dcv4katvi/image/upload/v1738533329/planta_nosotros1_znlllz.jpg"
             alt="Planta nosotros"
             className="about-image"
           />

@@ -97,7 +97,7 @@ body {
 .hero {
   height: 100vh;
   position: relative;
-  background-image: url("../public/fotos/Background.jpg");
+  background-image: url("https://res.cloudinary.com/dcv4katvi/image/upload/v1738533329/Background_xddtpk.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -304,35 +304,59 @@ body {
   color: #666;
 }
 
+/* Contenedor principal */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  width: 100%;
+  padding: 1rem;
 }
 
+/* Tarjeta individual */
 .team-card {
   display: flex;
   flex-direction: column;
   border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
 }
 
+/* Contenedor de la imagen */
 .team-card-image {
-  aspect-ratio: 1;
+  position: relative;
+  width: 100%;
+  padding-top: 75%; /* Ratio 4:3 para las imágenes */
   overflow: hidden;
 }
 
+/* Imagen */
 .team-card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Nombre del miembro del equipo */
 .team-card-name {
   padding: 1rem;
   background: #4a4a4a;
   color: white;
   text-align: center;
   font-size: 0.875rem;
+  margin-top: auto;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -348,12 +372,6 @@ body {
   .team-content h2::after {
     left: 50%;
     transform: translateX(-50%);
-  }
-}
-
-@media (max-width: 640px) {
-  .team-grid {
-    grid-template-columns: 1fr;
   }
 }
 

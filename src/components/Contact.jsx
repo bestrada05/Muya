@@ -13,7 +13,7 @@ export function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically handle form submission
+    // Enviar el formulario
     console.log("Form submitted:", formData);
   };
 
@@ -30,7 +30,7 @@ export function Contact() {
       <div className="contact-container">
         <div className="contact-image">
           <img
-            src="/fotos/planta_contacto.jpg"
+            src="https://res.cloudinary.com/dcv4katvi/image/upload/v1738533329/planta_contacto_pgxh7o.jpg"
             alt="Hand holding green plant stems"
             className="contact-photo"
           />

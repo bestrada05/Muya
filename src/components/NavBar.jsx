@@ -8,7 +8,11 @@ export function NavBar() {
     <nav className={`navbar ${isHome ? "navbar-transparent" : "navbar-solid"}`}>
       <div className="navbar-container">
         <Link to="/" className="logo">
-          <img src="/fotos/LOGO.PNG" alt="Logo" className="logo-img" />
+          <img
+            src="https://res.cloudinary.com/dcv4katvi/image/upload/v1738533330/LOGO_wp4aue.png"
+            alt="Logo"
+            className="logo-img"
+          />
         </Link>
 
         <div className="nav-links">
