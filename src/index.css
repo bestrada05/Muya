@@ -861,6 +861,7 @@ body {
 
 .form-group {
   position: relative;
+  width: 100%;
 }
 
 .form-input {
@@ -1468,79 +1469,105 @@ body {
   }
 }
 
-/* LOGIN */
+/* LOGIN  y REGISTER */
 .login {
-  padding: 13rem 20rem;
-  height: 85vh;
+  height: 100vh;
   width: 100vw;
   background-image: url("../public/fotos/Background.jpg");
   background-size: cover;
   background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
 .login-container {
+  margin-top: 80px;
   background: rgba(48, 43, 43, 0.8);
-  padding: 13rem 20rem; 
-  height: 50vh;
-  width: 60vw;
+  padding: 3rem;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 
 .login-item {
   color: white;
-  margin-bottom: 1rem;
-  font-size: 2.5rem;
-  font-weight: 400;  
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
 }
 
-.login-button {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  padding-top: 20px;
-  row-gap: 10px;
-  
-}
-
-.input-login{
+.input-login {
   width: 100%;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0);
+  min-width: 280px;
+  padding: 0.8rem;
+  background: transparent;
   border: none;
   color: white;
   font-size: 1rem;
-  border-color: 0 0 white;
-  border-width: 0 0 2px;
-  border-style:  solid;
+  border-bottom: 2px solid white;
 }
 
 .input-login::placeholder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   color: rgba(255, 255, 255, 0.7);
 }
 
 .input-login:focus {
   outline: none;
-  background: #555;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid #ddd;
 }
 
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 1rem;
+  gap: 10px;
+}
 
 .register-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  background: transparent;
+  border: 2px solid white;
   color: white;
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid white;
-  border-radius: 9999px;
-  align-self: flex-start;
-  transition: all 0.2s;
-  background: rgba(0, 0, 0, 0.1)
+  padding: 0.8rem 1.5rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+  align-self: center;
 }
 
-.register-button:hover {
+.register-button:hover,
+.about-button:hover {
   background: white;
-  color: #1a1a1a;
+  color: black;
+}
+
+/* 🎯 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .login-container {
+    width: 90%;
+    padding: 2rem;
+  }
+
+  .login-item {
+    font-size: 1.8rem;
+  }
+
+  .register-button,
+  .about-button {
+    width: 100%;
+  }
 }

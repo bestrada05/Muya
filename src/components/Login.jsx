@@ -57,13 +57,13 @@ export function Login() {
               INICIAR SESIÓN
               <ArrowRight className="button-icon" />
             </button>
-            <Link to="/register" className="about-button">
+            <Link to="/register" className="register-button">
               Registrarse
               <UserPlus className="button-icon" />
             </Link>
           </div>
         </form>
-      </div> 
+      </div>
     </section>
   );
 }

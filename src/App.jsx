@@ -31,8 +31,6 @@ function HomePage() {
       <Services />
       <Products />
       <Contact />
-      <Login />
-      <Register />
     </>
   );
 }
