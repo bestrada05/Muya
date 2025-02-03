@@ -1467,3 +1467,80 @@ body {
     justify-content: center;
   }
 }
+
+/* LOGIN */
+.login {
+  padding: 13rem 20rem;
+  height: 85vh;
+  width: 100vw;
+  background-image: url("../public/fotos/Background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.login-container {
+  background: rgba(48, 43, 43, 0.8);
+  padding: 13rem 20rem; 
+  height: 50vh;
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-item {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 400;  
+}
+
+.login-button {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding-top: 20px;
+  row-gap: 10px;
+  
+}
+
+.input-login{
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-color: 0 0 white;
+  border-width: 0 0 2px;
+  border-style:  solid;
+}
+
+.input-login::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-login:focus {
+  outline: none;
+  background: #555;
+}
+
+
+.register-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid white;
+  border-radius: 9999px;
+  align-self: flex-start;
+  transition: all 0.2s;
+  background: rgba(0, 0, 0, 0.1)
+}
+
+.register-button:hover {
+  background: white;
+  color: #1a1a1a;
+}
