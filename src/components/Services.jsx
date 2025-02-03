@@ -35,12 +35,6 @@ export function Services() {
       description:
         "Recuperamos espacios degradados con restauración del suelo, reforestación y especies nativas. Implementamos soluciones ecológicas para fomentar la biodiversidad y mejorar el equilibrio ambiental en cada intervención.",
     },
-    {
-      id: 6,
-      title: "Gestión de Residuos y Compostaje",
-      description:
-        "Reducimos el impacto ambiental mediante compostaje y reciclaje de residuos vegetales. Aplicamos principios de economía circular para transformar desechos en recursos útiles para el mantenimiento y restauración de áreas verdes.",
-    },
   ];
 
   const toggleService = (id) => {
