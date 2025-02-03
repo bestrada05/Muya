@@ -1473,7 +1473,7 @@ body {
 .login {
   height: 100vh;
   width: 100vw;
-  background-image: url("../public/fotos/Background.jpg");
+  background-image: url("https://res.cloudinary.com/dcv4katvi/image/upload/v1738533329/Background_xddtpk.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -1536,17 +1536,17 @@ body {
 }
 
 .register-button {
-  background: transparent;
-  border: 2px solid white;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: white;
-  padding: 0.8rem 1.5rem;
-  font-size: 0.8rem;
-  border-radius: 5px;
-  width: 100%;
-  max-width: 200px;
-  text-align: center;
-  transition: background 0.3s, color 0.3s;
-  align-self: center;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid white;
+  border-radius: 9999px;
+  align-self: flex-start;
+  transition: all 0.2s;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .register-button:hover,
