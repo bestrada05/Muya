@@ -8,10 +8,16 @@ dotenv.config();
 
 const login = async (req, res) => {
   try {
-    const { usu_email } = req.body;
-    const { id } = req.user;
-    const token = jwt.sign({ usu_email }, process.env.JWT_PASSWORD);
-    res.json({ token, id });
+    console.log("req.body<--",req.body);
+    console.log ("req.user<--",req.user);
+    const { id, email } = req.user;
+    const token = jwt.sign(
+        { id: req.user.id, email: req.user.email }, 
+        process.env.JWT_PASSWORD, 
+        { expiresIn: "1h" }
+      );
+
+    res.json({ token, id , email});
 
   } catch (error) {
     console.log('Error Login: ', error.message);
