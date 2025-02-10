@@ -326,3 +326,24 @@ PUT     http://localhost:5510/favoritos/:id
     "usu_id": 2,
     "pro_id": 1
 }
+
+
+--JSON [favoritos] con RUTA PROTEGIDA
+1. POST http://localhost:5510/usuarios/login
+{
+    "usu_email": "dddd.perez@email.com",
+    "usu_contrasena": "1234321"
+}
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoiZGRkZC5wZXJlekBlbWFpbC5jb20iLCJpYXQiOjE3MzkxNTQyMjQsImV4cCI6MTczOTE1NzgyNH0.e6Qh4DF8zygh9pJ265w3S1cmmMrjHJXCQH-MNNlYVyA",
+  "id": 11,
+  "email": "dddd.perez@email.com"
+}
+2. PUT http://localhost:5510/favoritos/1
+En el body:
+{
+  "usu_id": 2,
+  "pro_id": 3
+}
+y en la paleta HEADERS, agregar:
+Authorization Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoiZGRkZC5wZXJlekBlbWFpbC5jb20iLCJpYXQiOjE3MzkxNTQyMjQsImV4cCI6MTczOTE1NzgyNH0.e6Qh4DF8zygh9pJ265w3S1cmmMrjHJXCQH-MNNlYVyA

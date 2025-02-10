@@ -80,7 +80,7 @@ const postCreatePedido = async ({ usu_id, ped_total, esp_id, detalles }) => {
         RETURNING *`,
         pedido.ped_id
         ,1 // ID del método de pago (ej. tarjeta)
-        ,1 // ID del estado del pago (ej. completado)
+        ,2 // ID del estado del pago (ej. completado)
     );
 
     const { rows: pagoRows } = await pool.query(pagoQuery);

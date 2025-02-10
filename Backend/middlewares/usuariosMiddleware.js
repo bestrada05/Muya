@@ -46,30 +46,40 @@ export const verifyToken = (req, res, next) => {
     if (!payload) {
       throw new Error('Token inválido.');
     }
+    req.user = { id: payload.id};  // Asegurar que req.user tenga los valores correctos
 
     req.body.email = payload.email;
 
     next();
   } catch (error) {
-      console.log('Error verificar Token: ', error.message);
-      res.status(401).json({ message: error.message });
+    console.log('Error verificar Token: ', error.message);
+    res.status(401).json({ message: "Usuario no autenticado" });
   }
 };
 
 export const verificarRol = (rolesPermitidos) => {
   return async (req, res, next) => {
     try {
-      console.log("user_id<---",req.user.id);
-      const rolUsuario = await usersModel.getRol(req.user.id);
-     
-      if (!rolUsuario) return res.status(403).json({ message: "Usuario no encontrado" });
+      console.log("verificaRol<--",req.user)
+      if (!req.user || !req.user.id) {
+        return res.status(403).json({ message: "Usuario no autenticado" });
+      }
 
+      // Obtener el rol del usuario desde la base de datos
+      console.log("req.user.id <--",req.user.id);
+      const rolUsuario = await usersModel.getRol(req.user.id);
+      if (!rolUsuario) {
+        return res.status(403).json({ message: "Rol no encontrado" });
+      }
+
+      // Validar si el rol del usuario está en los roles permitidos
       if (!rolesPermitidos.includes(rolUsuario)) {
         return res.status(403).json({ message: "Acceso denegado" });
       }
 
       next();
     } catch (error) {
+      console.error("Error en verificarRol:", error.message);
       res.status(500).json({ message: "Error en la validación del rol" });
     }
   };

@@ -64,12 +64,31 @@ const verifyUserEmail = async (usu_email='') => {
   }
 };
 
+export const getRol = async (usu_id) => {
+  try {
+    const query = format(
+      `SELECT rol_id FROM usuarios WHERE usu_id = %L`, 
+      usu_id
+    );
 
+    const { rows } = await pool.query(query);
+    
+    if (rows.length === 0) {
+      return null; // Retorna null si el usuario no existe
+    }
+
+    return rows[0].rol_id; // Devuelve el rol del usuario
+  } catch (error) {
+    console.error("Error al obtener el rol del usuario:", error);
+    throw new Error("Error al consultar el rol del usuario");
+  }
+};
 
 export const usersModel = {
   verifyUserEmail,
   createUser,
   getAllUsers,
   getUser,
-  getContrasena
+  getContrasena,
+  getRol
 };
