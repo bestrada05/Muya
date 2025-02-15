@@ -12,9 +12,38 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically handle form submission
-    console.log("Form submitted:", formData);
-    alert("Validando Acceso!");
+
+    const email = formData.email; 
+    const password = formData.password;
+
+    try {
+      const response = await fetch("http://localhost:5510/usuarios/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+      if (!data.token) {
+        alert("Autenticación errónea!");
+        return;
+      }
+      
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
+      alert("Autenticación exitosa!-> Enviar a página privada");
+      localStorage.setItem("token", data.token);
+    } catch (error) {
+      console.error("Hubo un error:", error.message);
+      alert("Error en la autenticación.");
+    } 
   };
 
   const handleChange = (e) => {
