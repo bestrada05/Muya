@@ -14,6 +14,7 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     const email = formData.email; 
     const password = formData.password;
 
@@ -39,9 +40,11 @@ export function Login() {
         alert(data.error);
         return;
       }
+
       alert("Autenticación exitosa!");
       localStorage.setItem("token", data.token);
       navigate("/productos");
+
     } catch (error) {
       console.error("Hubo un error:", error.message);
       alert("Error en la autenticación.");
