@@ -1,3 +1,4 @@
+
 Mon, 10 Feb 2025 00:54:44 GMT -- method: GET -- url: /usuarios/login -- status: 404 -- response-time: 6.892 ms
 Mon, 10 Feb 2025 00:54:50 GMT -- method: POST -- url: /usuarios/login -- status: 500 -- response-time: 1226.191 ms
 Mon, 10 Feb 2025 00:55:53 GMT -- method: POST -- url: /usuarios/login -- status: 500 -- response-time: 1369.912 ms
@@ -102,3 +103,36 @@ Sat, 15 Feb 2025 21:07:21 GMT -- method: GET -- url: /pagos -- status: 401 -- re
 Sat, 15 Feb 2025 21:07:41 GMT -- method: GET -- url: /usuarios -- status: 401 -- response-time: 2.166 ms
 Sat, 15 Feb 2025 21:08:34 GMT -- method: GET -- url: /productos -- status: 200 -- response-time: 2478.304 ms
 Sat, 15 Feb 2025 21:10:21 GMT -- method: GET -- url: /productos -- status: 200 -- response-time: 399.749 ms
+
+Sat, 15 Feb 2025 20:51:44 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 149.894 ms
+Sat, 15 Feb 2025 20:52:00 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 43.322 ms
+Sat, 15 Feb 2025 20:52:00 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 16.831 ms
+Sat, 15 Feb 2025 20:57:51 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 70.903 ms
+Sat, 15 Feb 2025 21:04:20 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 60.687 ms
+Sat, 15 Feb 2025 21:04:45 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 39.781 ms
+Sat, 15 Feb 2025 21:04:45 GMT -- method: GET -- url: /favicon.ico -- status: 404 -- response-time: 2.907 ms
+Sat, 15 Feb 2025 21:04:52 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 36.553 ms
+Sat, 15 Feb 2025 21:08:19 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 83.361 ms
+Sat, 15 Feb 2025 21:08:19 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 17.918 ms
+Sat, 15 Feb 2025 21:09:39 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 45.569 ms
+Sat, 15 Feb 2025 21:16:48 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 76.073 ms
+Sat, 15 Feb 2025 21:16:48 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 24.940 ms
+Sat, 15 Feb 2025 21:16:56 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 25.539 ms
+Sat, 15 Feb 2025 21:16:56 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 20.480 ms
+Sun, 16 Feb 2025 01:32:43 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 76.065 ms
+Sun, 16 Feb 2025 01:32:43 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 21.142 ms
+Sun, 16 Feb 2025 01:46:48 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 143.425 ms
+Sun, 16 Feb 2025 01:46:48 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 18.062 ms
+Sun, 16 Feb 2025 01:48:58 GMT -- method: GET -- url: /productos/1 -- status: 500 -- response-time: 96.750 ms
+Sun, 16 Feb 2025 01:49:41 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 53.158 ms
+Sun, 16 Feb 2025 01:49:41 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 17.328 ms
+Sun, 16 Feb 2025 01:50:29 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 47.982 ms
+Sun, 16 Feb 2025 01:50:29 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 17.146 ms
+Sun, 16 Feb 2025 01:56:34 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 61.355 ms
+Sun, 16 Feb 2025 01:56:34 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 19.654 ms
+Sun, 16 Feb 2025 02:06:52 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 118.687 ms
+Sun, 16 Feb 2025 02:06:53 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 61.823 ms
+Sun, 16 Feb 2025 12:27:54 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 88.891 ms
+Sun, 16 Feb 2025 12:27:54 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 20.484 ms
+Sun, 16 Feb 2025 13:23:44 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 99.618 ms
+Sun, 16 Feb 2025 13:23:44 GMT -- method: GET -- url: /productos -- status: 500 -- response-time: 17.652 ms

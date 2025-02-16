@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { ArrowRight, UserPlus } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -12,9 +14,41 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically handle form submission
-    console.log("Form submitted:", formData);
-    alert("Validando Acceso!");
+    
+    const email = formData.email; 
+    const password = formData.password;
+
+    try {
+      const response = await fetch("http://localhost:5510/usuarios/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+      if (!data.token) {
+        alert("Autenticación errónea!");
+        return;
+      }
+      
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
+
+      alert("Autenticación exitosa!");
+      localStorage.setItem("token", data.token);
+      navigate("/productos");
+
+    } catch (error) {
+      console.error("Hubo un error:", error.message);
+      alert("Error en la autenticación.");
+    } 
   };
 
   const handleChange = (e) => {
