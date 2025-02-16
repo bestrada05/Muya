@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Eye, ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
@@ -5,62 +6,37 @@ import { toast } from "sonner";
 
 export function Products() {
   const { addToCart } = useCart();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const products = [
-    {
-      id: 1,
-      name: "Nombre Producto",
-      description: "Descripción",
-      price: "Precio",
-      image: "/placeholder.svg?height=300&width=300",
-      slug: "product-1",
-    },
-    {
-      id: 2,
-      name: "Nombre Producto",
-      description: "Descripción",
-      price: "Precio",
-      image: "/placeholder.svg?height=300&width=300",
-      slug: "product-2",
-    },
-    {
-      id: 3,
-      name: "Nombre Producto",
-      description: "Descripción",
-      price: "Precio",
-      image: "/placeholder.svg?height=300&width=300",
-      slug: "product-3",
-    },
-    {
-      id: 4,
-      name: "Nombre Producto",
-      description: "Descripción",
-      price: "Precio",
-      image: "/placeholder.svg?height=300&width=300",
-      slug: "product-4",
-    },
-    {
-      id: 5,
-      name: "Nombre Producto",
-      description: "Descripción",
-      price: "Precio",
-      image: "/placeholder.svg?height=300&width=300",
-      slug: "product-5",
-    },
-    {
-      id: 6,
-      name: "Nombre Producto",
-      description: "Descripción",
-      price: "Precio",
-      image: "/placeholder.svg?height=300&width=300",
-      slug: "product-6",
-    },
-  ];
+  //Obtención de productos desde el backend:
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("http://localhost:5510/productos");
+        if (!response.ok) {
+          throw new Error("Error al obtener productos");
+        }
+        const data = await response.json();
+        setProducts(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleAddToCart = (product) => {
     addToCart(product);
     toast.success("Producto añadido al carrito");
   };
+
+  if (loading) return <p>Cargando productos...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <section className="products">
@@ -71,19 +47,16 @@ export function Products() {
           {products.map((product) => (
             <div key={product.id} className="product-card">
               <div className="product-image">
-                <img
-                  src={product.image || "/placeholder.svg"}
-                  alt={product.name}
-                />
+                <img src={product.imagen_url} alt={product.descripcion} />
               </div>
               <div className="product-info">
-                <h3>{product.name}</h3>
-                <p className="product-description">{product.description}</p>
-                <p className="product-price">{product.price}</p>
+                <h3>{product.descripcion}</h3>
+                <p className="product-description">{product.caracteristica}</p>
+                <p className="product-price">{product.precio}</p>
               </div>
               <div className="product-actions">
                 <Link
-                  to={`/products/${product.slug}`}
+                  to={`/products/${product.id}`}
                   className="product-button view"
                 >
                   <Eye className="w-4 h-4" />
