@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { UserPlus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export function Register() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -13,12 +15,36 @@ export function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.password != formData.password2) {
-      alert("Los password deben ser iguales");
-      return;
-    }
-    console.log("Form submitted:", formData);
-    alert("Registro Exitoso!");
+    const nombre = formData.nombre;
+    const email = formData.email;
+    const password = formData.password;
+    const password2 = formData.password2;
+
+    try {
+      const response = await fetch("http://localhost:5510/usuarios/registro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nombre,
+          email,
+          password,
+          password2
+        }),
+      });
+
+      const data = await response.json();
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
+      alert("Registro exitoso!");
+      navigate("/login");
+    } catch (error) {
+      console.error("Hubo un error:", error.message);
+      alert("Error en el registro.");
+    } 
   };
 
   const handleChange = (e) => {

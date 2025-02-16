@@ -7,17 +7,20 @@ dotenv.config();
 
 export const verifyCredentials = async (req, res, next) => {
   try {
+
     const { email, password } = req.body;  
-    
+
     if (!email || !password) {
       throw { message: 'Email and password required.' };
     }
     const user = await usersModel.getUser(email);
     if (!user) {
-      throw { message: `This email is not registered ${usu_email}.` };
+      throw { message: `This email is not registered ${email}.` };
     }
 
+
     const { passwordBD, id } = await usersModel.getContrasena(email, password);
+
     const verifyPassword = await bcrypt.compare(password, passwordBD);
     if (!verifyPassword) {
       throw { message: 'Incorrect password.' };
