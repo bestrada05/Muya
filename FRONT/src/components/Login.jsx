@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { ArrowRight, UserPlus } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -12,7 +14,7 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     const email = formData.email; 
     const password = formData.password;
 
@@ -38,8 +40,11 @@ export function Login() {
         alert(data.error);
         return;
       }
-      alert("Autenticación exitosa!-> Enviar a página privada");
+
+      alert("Autenticación exitosa!");
       localStorage.setItem("token", data.token);
+      navigate("/productos");
+
     } catch (error) {
       console.error("Hubo un error:", error.message);
       alert("Error en la autenticación.");
