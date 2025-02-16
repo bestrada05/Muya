@@ -28,32 +28,25 @@ const login = async (req, res) => {
 
 const registerUser = async (req, res) => {
   try {
-    const { usu_nombre, usu_email, usu_contrasena, usu_direccion,usu_telefono,rol_id } = req.body;
-    console.log("Datos recibidos en req.body:", req.body);
+    const { nombre, email, password, password2, rol = 2 } = req.body;
 
-    if (!usu_nombre || !usu_email || !usu_contrasena || !usu_direccion|| !usu_telefono) {
-      throw new Error ('Los campos nombre, email, contraseña, dirección y teléfono son obligatorios.');
+    if (!nombre || !email || !password || !password2 ) {
+      throw new Error ('Required fields ');
     }
 
-    const verifyEmail = await usersModel.verifyUserEmail(usu_email);
-    console.log("verifyEmail en registeruser: ");
-    console.log(verifyEmail);
+    const verifyEmail = await usersModel.verifyUserEmail(email);
     if (verifyEmail.rowCount>0){
-      throw new Error('Email ya registrado.');
+      throw new Error('Existing email');
     }
 
     const result = await usersModel.createUser({
-      usu_nombre
-      ,usu_email
-      ,usu_contrasena: bcrypt.hashSync(usu_contrasena, 10)
-      ,usu_direccion
-      ,usu_telefono
-      ,rol_id
+      nombre
+      ,email
+      ,password: bcrypt.hashSync(password, 10)
+      ,rol
     });
 
-    console.log('Registro Usuario: ', result);
-    res.status(201).json({ message: 'Usuario registrado con éxito.' });
-
+    res.status(201).json({ success: true, message: "Successful registration!" });
   } catch (error) {
     console.log('Error al registrar usuario: ', error.message);
     res.status(500).json({ message: error.message });
