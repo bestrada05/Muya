@@ -14,6 +14,7 @@ import { Footer } from "./components/Footer";
 import { ProductDetail } from "./components/ProductDetail";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
+import { NotFound } from "./components/NotFound";
 import { Toaster } from "./components/ui/Toaster";
 
 function HomePage() {
