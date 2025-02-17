@@ -6,7 +6,7 @@ export function Cart() {
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => {
-      return total + item.price * item.quantity;
+      return total + item.pro_precio * item.quantity;
     }, 0);
   };
 
@@ -15,11 +15,11 @@ export function Cart() {
     // Implementar lógica de Pago acá
   };
 
-  const handleQuantityChange = (itemId, newQuantity) => {
+  const handleQuantityChange = (pro_id, newQuantity) => {
     if (newQuantity <= 0) {
-      removeFromCart(itemId);
+      removeFromCart(pro_id);
     } else {
-      updateQuantity(itemId, newQuantity);
+      updateQuantity(pro_id, newQuantity);
     }
   };
 
@@ -37,17 +37,20 @@ export function Cart() {
         <h1>Carrito de Compra</h1>
         <div className="cart-items">
           {cartItems.map((item) => (
-            <div key={item.id} className="cart-item">
+            <div key={item.pro_id} className="cart-item">
               <div className="cart-item-image">
-                <img src={item.image || "/placeholder.svg"} alt={item.name} />
+                <img
+                  src={item.pro_imagen_url || "/placeholder.svg"}
+                  alt={item.pro_descripcion}
+                />
               </div>
               <div className="cart-item-info">
-                <h3>{item.name}</h3>
+                <h3>{item.pro_descripcion}</h3>
                 <div className="quantity-controls">
                   <button
                     className="quantity-button"
                     onClick={() =>
-                      handleQuantityChange(item.id, item.quantity - 1)
+                      handleQuantityChange(item.pro_id, item.quantity - 1)
                     }
                   >
                     <Minus className="button-icon" />
@@ -56,17 +59,19 @@ export function Cart() {
                   <button
                     className="quantity-button"
                     onClick={() =>
-                      handleQuantityChange(item.id, item.quantity + 1)
+                      handleQuantityChange(item.pro_id, item.quantity + 1)
                     }
                   >
                     <Plus className="button-icon" />
                   </button>
                 </div>
-                <p className="item-price">${item.price * item.quantity}</p>
+                <p className="item-price">
+                  ${Number(item.pro_precio * item.quantity).toLocaleString()}
+                </p>
               </div>
               <div className="cart-item-actions">
                 <button
-                  onClick={() => removeFromCart(item.id)}
+                  onClick={() => removeFromCart(item.pro_id)}
                   className="cart-action-button delete"
                   aria-label="Eliminar producto"
                 >
@@ -80,7 +85,9 @@ export function Cart() {
         <div className="cart-summary">
           <div className="total-section">
             <h2>Total a Pagar:</h2>
-            <span className="total-amount">${calculateTotal()}</span>
+            <span className="total-amount">
+              ${Number(calculateTotal()).toLocaleString()}
+            </span>
           </div>
           <button
             onClick={handlePayment}

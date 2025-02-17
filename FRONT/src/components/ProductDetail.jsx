@@ -16,7 +16,9 @@ export function ProductDetail() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:5510/productos/${id}`);
+        const response = await fetch(
+          `https://muyabackend.onrender.com/productos/${id}`
+        );
         if (!response.ok) throw new Error("Error al obtener el producto");
 
         const data = await response.json();
@@ -39,10 +41,14 @@ export function ProductDetail() {
   };
 
   const handleAddToCart = () => {
-    if (product) {
-      addToCart(product, quantity);
-      toast.success("Producto añadido al carrito");
-    }
+    const productToAdd = {
+      pro_id: product.pro_id,
+      pro_descripcion: product.pro_descripcion,
+      pro_imagen_url: product.pro_imagen_url,
+      pro_precio: product.pro_precio,
+    };
+    addToCart(productToAdd, quantity);
+    toast.success("Producto añadido al carrito");
   };
 
   if (loading) return <p>Cargando...</p>;
@@ -53,9 +59,17 @@ export function ProductDetail() {
     <div className="product-detail-page">
       <div className="product-detail-container">
         <div className="product-detail-content">
-          <h1>{product.descripcion}</h1>
+          <h1>{product.pro_descripcion}</h1>
           <div className="product-detail-description">
-            <p>{product.caracteristica || "No hay descripción disponible."}</p>
+            <p>
+              {product.pro_caracteristica || "No hay descripción disponible."}
+            </p>
+          </div>
+          <div className="product-detail-price">
+            <p>
+              <strong>Precio:</strong> $
+              {Number(product.pro_precio).toLocaleString()}
+            </p>
           </div>
           <div className="product-detail-form">
             <div className="quantity-input">
@@ -75,7 +89,7 @@ export function ProductDetail() {
           </div>
         </div>
         <div className="product-detail-image">
-          <img src={product.imagen_url} alt={product.descripcion} />
+          <img src={product.pro_imagen_url} alt={product.pro_descripcion} />
         </div>
       </div>
     </div>

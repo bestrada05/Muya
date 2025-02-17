@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, UserPlus } from "lucide-react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Login() {
   const navigate = useNavigate();
@@ -14,8 +13,8 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const email = formData.email; 
+
+    const email = formData.email;
     const password = formData.password;
 
     try {
@@ -35,7 +34,7 @@ export function Login() {
         alert("Autenticación errónea!");
         return;
       }
-      
+
       if (data.error) {
         alert(data.error);
         return;
@@ -44,11 +43,10 @@ export function Login() {
       alert("Autenticación exitosa!");
       localStorage.setItem("token", data.token);
       navigate("/productos");
-
     } catch (error) {
       console.error("Hubo un error:", error.message);
       alert("Error en la autenticación.");
-    } 
+    }
   };
 
   const handleChange = (e) => {

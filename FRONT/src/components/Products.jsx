@@ -9,18 +9,23 @@ export function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const defaultImage = "/placeholder.jpg"; // Imagen por defecto
 
-  //Obtención de productos desde el backend:
+  // Obtener producto desde el backend
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:5510/productos");
+        const response = await fetch(
+          "https://muyabackend.onrender.com/productos"
+        );
         if (!response.ok) {
           throw new Error("Error al obtener productos");
         }
         const data = await response.json();
+        console.log("Datos completos recibidos:", data);
         setProducts(data);
       } catch (err) {
+        console.error("Error en fetchProducts:", err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -45,18 +50,25 @@ export function Products() {
 
         <div className="products-grid">
           {products.map((product) => (
-            <div key={product.id} className="product-card">
+            <div key={product.pro_id} className="product-card">
               <div className="product-image">
-                <img src={product.imagen_url} alt={product.descripcion} />
+                <img
+                  src={product.pro_imagen_url || defaultImage}
+                  alt={product.pro_descripcion}
+                />
               </div>
               <div className="product-info">
-                <h3>{product.descripcion}</h3>
-                <p className="product-description">{product.caracteristica}</p>
-                <p className="product-price">{product.precio}</p>
+                <h3>{product.pro_descripcion}</h3>
+                <p className="product-description">
+                  {product.pro_caracteristica}
+                </p>
+                <p className="product-price">
+                  ${Number(product.pro_precio).toLocaleString()}
+                </p>
               </div>
               <div className="product-actions">
                 <Link
-                  to={`/products/${product.id}`}
+                  to={`/productos/${product.pro_id}`}
                   className="product-button view"
                 >
                   <Eye className="w-4 h-4" />
