@@ -163,8 +163,10 @@ CREATE TABLE usuarios (
     usu_nombre VARCHAR(100) NOT NULL,
     usu_email VARCHAR(100) UNIQUE NOT NULL,
     usu_contrasena TEXT NOT NULL,
-    usu_direccion TEXT,
-    usu_telefono VARCHAR(20),
+    --> 2025.02.17 INI cvegasan Se eliminan campos del modelo para ajustar a formulario registro
+    --usu_direccion TEXT,
+    --usu_telefono VARCHAR(20),
+    --< 2025.02.17 FIN cvegasan Se eliminan campos del modelo para ajustar a formulario registro
     rol_id int REFERENCES roles(rol_id), -- '1 Admin' o '2 Cliente'
     usu_fecha_registro DATE DEFAULT CURRENT_DATE
 );
