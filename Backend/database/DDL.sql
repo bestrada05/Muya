@@ -200,9 +200,11 @@ CREATE TABLE productos (
 );
 INSERT INTO productos (pro_descripcion, pro_caracteristica, pro_precio, pro_stock, pro_imagen_url, cat_id)
 VALUES
-('Rosa del Desierto', 'Planta decorativa resistente al sol'		, 1000, 1000, 'url-imagen-rosa', 1),
-('Palas de Jardinería', 'Pala multiusos para jardinería'		, 2000, 1000, 'url-imagen-palas', 2),
-('Compost Orgánico', 'Compost natural para mejorar el suelo'	, 3000, 1000, 'url-imagen-compost', 3);
+('Macetero de Cerámica', 'Macetero hecho a mano con acabado rústico', 950, 20, 'https://res.cloudinary.com/dcv4katvi/image/upload/v1739732674/pro_id_1_xvr7rq.jpg', 4)
+('Sustrato para Plantas', 'Sustrato universal para todo tipo de plantas', 8500, 50, 'https://res.cloudinary.com/dcv4katvi/image/upload/v1739732752/2_zydqop.jpg', 3)
+('Regadera Metálica', 'Regadera de acero inoxidable con diseño ergonómico', 12000, 30, 'https://res.cloudinary.com/dcv4katvi/image/upload/v1739732871/3_nvdlwd.jpg', 1)
+('Fertilizante Orgánico', 'Fertilizante natural para estimular el crecimiento',7000, 25, 'https://res.cloudinary.com/dcv4katvi/image/upload/v1739732871/4_b1umds.jpg', 3)
+('Kit de Herramientas para Jardinería',	'Set de 5 herramientas esenciales para jardinería',12500 ,15, 'https://res.cloudinary.com/dcv4katvi/image/upload/v1739732872/5_bs0zba.jpg',2)
 
 
 --5 Carrito de Compras (carrito)
