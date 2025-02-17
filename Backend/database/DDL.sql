@@ -170,10 +170,10 @@ CREATE TABLE usuarios (
     rol_id int REFERENCES roles(rol_id), -- '1 Admin' o '2 Cliente'
     usu_fecha_registro DATE DEFAULT CURRENT_DATE
 );
-INSERT INTO usuarios (usu_nombre, usu_email, usu_contrasena, usu_direccion, usu_telefono, rol_id) VALUES
-('Alice Flores', 'alice@example.com', 'hashedpassword123', 'Av. Jardines 123, Ciudad Verde', '123456789', 2), --cliente
-('Bob Jardinero', 'bob@example.com', 'hashedpassword456', 'Calle Plantas 456, Ciudad Verde', '987654321', 3),
-('Admin Plantas', 'admin@example.com', 'hashedpassword789', 'Av. Central 789, Ciudad Verde', '111222333', 1);
+INSERT INTO usuarios (usu_nombre, usu_email, usu_contrasena, rol_id) VALUES
+('Alice Flores', 'alice@example.com', 'hashedpassword123', 2), --cliente
+('Bob Jardinero', 'bob@example.com', 'hashedpassword456', 3),
+('Admin Plantas', 'admin@example.com', 'hashedpassword789', 1);
 
 
 --3 CATEGORÍAS (categorias)
