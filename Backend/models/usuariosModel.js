@@ -1,4 +1,4 @@
-import { pool } from '../database/connection.js';
+import { pool } from "../database/connection.js";
 import format from "pg-format";
 
 const getAllUsers = async () => {
@@ -11,20 +11,26 @@ const getAllUsers = async () => {
   }
 };
 
-const createUser = async ({nombre, email, password, rol = 2}) => {
+const createUser = async ({ nombre, email, password, rol = 2 }) => {
   const query = format(
     `INSERT INTO usuarios (usu_nombre, usu_email, usu_contrasena, rol_id)
      VALUES (%L, %L, %L, %L)
      RETURNING *;`,
-    nombre, email, password, rol
+    nombre,
+    email,
+    password,
+    rol
   );
   const result = await pool.query(query);
   return result.rows[0];
 };
 
-const getUser = async (usu_email='') => {
+const getUser = async (usu_email = "") => {
   try {
-    const query = format("SELECT 1 FROM usuarios WHERE usu_email = %L", usu_email);
+    const query = format(
+      "SELECT 1 FROM usuarios WHERE usu_email = %L",
+      usu_email
+    );
     const result = await pool.query(query);
     return result.rowCount > 0;
   } catch (error) {
@@ -35,14 +41,17 @@ const getUser = async (usu_email='') => {
 
 const getContrasena = async (usu_email) => {
   try {
-    const query = format("SELECT usu_contrasena, usu_id FROM usuarios WHERE usu_email = %L", usu_email);
+    const query = format(
+      "SELECT usu_contrasena, usu_id FROM usuarios WHERE usu_email = %L",
+      usu_email
+    );
     const result = await pool.query(query);
     if (result.rows.length > 0) {
       const usu_contrasena = result.rows[0].usu_contrasena;
       const usu_id = result.rows[0].usu_id;
       return {
         passwordBD: usu_contrasena,
-        id: usu_id
+        id: usu_id,
       };
     }
   } catch (error) {
@@ -51,11 +60,13 @@ const getContrasena = async (usu_email) => {
   }
 };
 
-const verifyUserEmail = async (usu_email='') => {
-
+const verifyUserEmail = async (usu_email = "") => {
   try {
-     const query = format("SELECT 1 FROM usuarios WHERE usu_email = %L", usu_email);
-     const result = await pool.query(query);
+    const query = format(
+      "SELECT 1 FROM usuarios WHERE usu_email = %L",
+      usu_email
+    );
+    const result = await pool.query(query);
     return result.rowCount > 0; // Devuelve true si el email existe, false si no existe
   } catch (error) {
     console.error("Error al verificar email:", error.message);
@@ -66,12 +77,12 @@ const verifyUserEmail = async (usu_email='') => {
 export const getRol = async (usu_id) => {
   try {
     const query = format(
-      `SELECT rol_id FROM usuarios WHERE usu_id = %L`, 
+      `SELECT rol_id FROM usuarios WHERE usu_id = %L`,
       usu_id
     );
 
     const { rows } = await pool.query(query);
-    
+
     if (rows.length === 0) {
       return null; // Retorna null si el usuario no existe
     }
@@ -89,5 +100,5 @@ export const usersModel = {
   getAllUsers,
   getUser,
   getContrasena,
-  getRol
+  getRol,
 };

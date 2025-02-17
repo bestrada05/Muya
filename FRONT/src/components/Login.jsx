@@ -3,9 +3,15 @@
 import { useState } from "react";
 import { ArrowRight, UserPlus } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { toast } from "sonner";
 
 export function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -13,39 +19,24 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
 
-    const email = formData.email;
-    const password = formData.password;
+    const { email, password } = formData;
 
     try {
-      const response = await fetch("http://localhost:5510/usuarios/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      const result = await login(email, password);
 
-      const data = await response.json();
-      if (!data.token) {
-        alert("Autenticación errónea!");
-        return;
+      if (result.success) {
+        toast.success("Inicio existoso");
+        navigate("/productos");
+      } else {
+        setError(result.error || "Error en la autenticación");
       }
-
-      if (data.error) {
-        alert(data.error);
-        return;
-      }
-
-      alert("Autenticación exitosa!");
-      localStorage.setItem("token", data.token);
-      navigate("/productos");
     } catch (error) {
-      console.error("Hubo un error:", error.message);
-      alert("Error en la autenticación.");
+      setError("Error al iniciar sesión");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,6 +52,9 @@ export function Login() {
     <section className="login">
       <div className="login-container">
         <h2 className="login-item">BIENVENIDO</h2>
+        {error && (
+          <div className="error-message text-red-500 mb-4">{error}</div>
+        )}
         <form onSubmit={handleSubmit} className="contact-form">
           <div className="form-group">
             <input
@@ -71,6 +65,7 @@ export function Login() {
               placeholder="Email"
               required
               className="input-login"
+              disabled={loading}
             />
           </div>
           <div className="form-group">
@@ -82,11 +77,16 @@ export function Login() {
               placeholder="Contraseña"
               required
               className="input-login"
+              disabled={loading}
             />
           </div>
           <div className="login-button">
-            <button type="submit" className="register-button">
-              INICIAR SESIÓN
+            <button
+              type="submit"
+              className="register-button"
+              disabled={loading}
+            >
+              {loading ? "INICIANDO..." : "INICIAR SESIÓN"}
               <ArrowRight className="button-icon" />
             </button>
             <Link to="/register" className="register-button">

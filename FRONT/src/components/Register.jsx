@@ -1,50 +1,46 @@
-"use client";
-
 import { useState } from "react";
 import { UserPlus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { toast } from "sonner";
 
 export function Register() {
   const navigate = useNavigate();
+  const { register } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
     password: "",
     password2: "",
+    rol_id: 2, // Agregamos rol_id con valor por defecto 2
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const nombre = formData.nombre;
-    const email = formData.email;
-    const password = formData.password;
-    const password2 = formData.password2;
+    setError("");
+    setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5510/usuarios/registro", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nombre,
-          email,
-          password,
-          password2
-        }),
-      });
+      // Destructuramos incluyendo rol_id
+      const { nombre, email, password, password2, rol_id } = formData;
 
-      const data = await response.json();
-      if (data.error) {
-        alert(data.error);
-        return;
+      // Pasamos rol_id al método de registro
+      const result = await register(nombre, email, password, password2, rol_id);
+
+      if (result.success) {
+        toast.success("Registro existoso");
+        navigate("/login");
+      } else {
+        setError(result.error || "Error en el registro");
       }
-      alert("Registro exitoso!");
-      navigate("/login");
     } catch (error) {
-      console.error("Hubo un error:", error.message);
-      alert("Error en el registro.");
-    } 
+      setError("Error al procesar el registro");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -59,7 +55,9 @@ export function Register() {
     <section className="login">
       <div className="login-container">
         <h2 className="login-item">CREA TU CUENTA</h2>
-
+        {error && (
+          <div className="error-message text-red-500 mb-4">{error}</div>
+        )}
         <form onSubmit={handleSubmit} className="contact-form">
           <div className="form-group">
             <input
@@ -70,9 +68,9 @@ export function Register() {
               placeholder="Nombre"
               required
               className="input-login"
+              disabled={loading}
             />
           </div>
-
           <div className="form-group">
             <input
               type="email"
@@ -82,9 +80,9 @@ export function Register() {
               placeholder="Email"
               required
               className="input-login"
+              disabled={loading}
             />
           </div>
-
           <div className="form-group">
             <input
               type="password"
@@ -94,6 +92,7 @@ export function Register() {
               placeholder="Contraseña"
               required
               className="input-login"
+              disabled={loading}
             />
           </div>
           <div className="form-group">
@@ -105,11 +104,16 @@ export function Register() {
               placeholder="Confirma tu Contraseña"
               required
               className="input-login"
+              disabled={loading}
             />
           </div>
           <div className="login-button">
-            <button type="submit" className="register-button">
-              REGISTRAR
+            <button
+              type="submit"
+              className="register-button"
+              disabled={loading}
+            >
+              {loading ? "REGISTRANDO..." : "REGISTRAR"}
               <UserPlus className="button-icon" />
             </button>
           </div>
