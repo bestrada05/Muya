@@ -1,8 +1,12 @@
 import { Trash2, CreditCard, Plus, Minus } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export function Cart() {
-  const { cartItems, removeFromCart, updateQuantity } = useCart();
+  const { cartItems, removeFromCart, updateQuantity, checkout } = useCart();
+  const { isAuthenticated, user } = useAuth();
+  const navigate = useNavigate();
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => {
@@ -10,11 +14,25 @@ export function Cart() {
     }, 0);
   };
 
-  const handlePayment = () => {
-    console.log("Processing payment for all items:", cartItems);
-    // Implementar lógica de Pago acá
-  };
+  const handlePayment = async () => {
+    // Verificar autenticación
+    if (!isAuthenticated()) {
+      alert("Debes iniciar sesión para realizar un pedido");
+      navigate("/login");
+      return;
+    }
 
+    try {
+      // Usar el método checkout del CartContext, pasando token
+      const result = await checkout(user.id, user.token, 1); // 1 es el esp_id, ajusta según tu lógica
+
+      alert("Pedido realizado con éxito");
+      navigate("/");
+    } catch (error) {
+      console.error("Error en el pedido:", error);
+      alert(error.message || "Hubo un problema al procesar el pedido");
+    }
+  };
   const handleQuantityChange = (pro_id, newQuantity) => {
     if (newQuantity <= 0) {
       removeFromCart(pro_id);

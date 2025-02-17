@@ -42,3 +42,43 @@ Los hooks aplicados son: useContext, useState, useEffect.
 ### 5. Utilizar Context para el manejo del estado global.
 
 UseContext usado en el carro de compras
+
+---
+
+## Manejo de Autenticacion - Login
+
+1. AuthContext (context/AuthContext.jsx)
+
+- Maneja el estado de autenticación global
+- Almacena datos del usuario (id, email, token)
+- Proporciona funciones principales:
+  login: Autenticación con el backend
+  logout: Cierre de sesión
+  checkAuth: Verifica validez del token
+  isAuthenticated: Estado de autenticación
+
+2. Login Component (components/Login.jsx)
+
+- Formulario de inicio de sesión
+- Utiliza el AuthContext para manejar la autenticación
+- Maneja errores y estados de carga
+- Redirecciona tras login exitoso
+
+3. Integración con Backend
+
+- Conecta con tus endpoints:
+  POST /usuarios/login para autenticación
+  GET /usuarios/verify para verificación de token
+
+- Maneja el token JWT que expira en 1 hora
+- Almacena en localStorage:
+  token
+  userId
+  userEmail
+
+4. Seguridad
+
+- Validación de token
+- Manejo de expiración de sesión
+- Almacenamiento seguro de credenciales
+- Protección de rutas

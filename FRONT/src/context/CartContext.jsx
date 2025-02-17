@@ -63,7 +63,7 @@ export const CartProvider = ({ children }) => {
   };
 
   //  Función para enviar el pedido al backend
-  const checkout = async (usu_id, esp_id) => {
+  const checkout = async (usu_id, token, esp_id) => {
     const ped_total = cartItems.reduce(
       (total, item) => total + item.pro_precio * item.quantity,
       0
@@ -78,13 +78,19 @@ export const CartProvider = ({ children }) => {
     const pedidoData = { usu_id, ped_total, esp_id, detalles };
 
     try {
-      const response = await fetch("http://localhost:5510/pedidos", {
+      const response = await fetch("https://muyabackend.onrender.com/pedidos", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Añadir token de autorización
+        },
         body: JSON.stringify(pedidoData),
       });
 
-      if (!response.ok) throw new Error("Error al completar el pedido");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Error al completar el pedido");
+      }
 
       const result = await response.json();
       console.log("Pedido realizado con éxito:", result);
@@ -92,7 +98,7 @@ export const CartProvider = ({ children }) => {
       return result;
     } catch (error) {
       console.error("Error al realizar el pedido:", error);
-      return null;
+      throw error; // Relanzar el error para manejarlo en el componente
     }
   };
 
