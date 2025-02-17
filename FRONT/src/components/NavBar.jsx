@@ -1,8 +1,17 @@
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext"; // Ajusta la ruta según tu estructura
+import { useNavigate } from "react-router-dom";
 
 export function NavBar() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { isAuthenticated, logout } = useAuth();
   const isHome = location.pathname === "/";
+
+  const handleLogout = () => {
+    logout();
+    navigate("/"); // Redirige al inicio después de cerrar sesión
+  };
 
   return (
     <nav className={`navbar ${isHome ? "navbar-transparent" : "navbar-solid"}`}>
@@ -40,9 +49,15 @@ export function NavBar() {
               <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
             </svg>
           </Link>
-          <Link to="/login" className="login-link">
-            Ingresa
-          </Link>
+          {isAuthenticated() ? (
+            <Link to="/" onClick={handleLogout} className="login-link">
+              Cerrar Sesión
+            </Link>
+          ) : (
+            <Link to="/login" className="login-link">
+              Ingresa
+            </Link>
+          )}
         </div>
       </div>
     </nav>
